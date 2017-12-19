@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
         email        : String,
         password     : String,
         mailvalidated: Boolean,
-        gmail        : String 
+        gmail        : String, 
         activationtoken: String,
         timepwdreco  : Number,
         pwdrecotoken : String
@@ -22,7 +22,7 @@ userSchema.methods.generateHash = function(password) {
 
 // checking if password is valid
 userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password)
+    return bcrypt.compareSync(password, this.password)
 }
 
 //generate password recovery token
